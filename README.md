@@ -6,9 +6,9 @@ The code here provides an example of MCMC for generalized linear mixed model usi
 
 The test folder include a test example for Rcpp, RcppArmadillo and parallelization in Rcpp via OpenMP. Three ways are used to calculate the inner product of a vector: R operation '%*%', user defined function 'inner' coded in Rcpp, and parallelize the 'inner' function with multiple cores. A small set of micro-benchmarks in a variety of methods are conducted.
 
-The arms-exp folder include the example of MCMC for generalized linear mixed model using Adaptive Metropolis rejection sampling (AMRS). Two methods are compared. First  is using the arms function in R Hi package. Second is writing log density functions and sampling process all in Rcpp/C. The pure cpp code is 30 times faster than R code. 
+The arms-exp folder include the example of MCMC for generalized linear mixed model using AMRS. Two methods are compared. First  is using the arms function in R Hi package. Second is writing log density functions and sampling process all in Rcpp/C. The pure cpp code is 30 times faster than R code. 
 
-The arms_openMP_exp folder include the same example but parallelized the sampling process for random effect. Usually this part is the most time consuming one when the number of subject is large. However, sampling random effect for each subject is independent can be parallelized. However, I didn't find a big time saving when the using multiple cores in this case. This may because the time spent on transferring/aggregating data is longer than the time saved for sampling. Further testing may needed.
+The arms_openMP_exp folder include the same example but parallelized the sampling process for random effect. Usually this part is the most time consuming one when the number of subject is large. However, sampling random effect for each subject is independent and can be parallelized. However, I didn't find a big time saving when increased the number of cores more than 3 in this case. This may because the time spent on transferring/aggregating data is longer than the time saved for sampling. Further testing may needed.
 
 If you are new to Rcpp then the following resources provide a helpful introduction:
 
